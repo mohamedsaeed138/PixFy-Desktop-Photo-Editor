@@ -3,6 +3,8 @@ import customtkinter as ctk
 from Views.Main_Screen.Assistant_Menu.assistant_menu import AssistantMenu
 from Views.Main_Screen.Images_Container.images_container import ImagesContainer
 from Views.Main_Screen.Editor_Menu.editor_menu import EditorMenu
+from Controller.upload_image import UploadImage
+from tkinterdnd2 import TkinterDnD, DND_ALL
 
 
 class MainScreen(CTkFrame):
@@ -25,3 +27,22 @@ class MainScreen(CTkFrame):
             self, size=(master_size[0] * 0.6, master_size[1] * 0.281)
         )
         self.editor_menu.grid(row=7, column=2, rowspan=3, columnspan=6)
+        self.assistant_menu.upload_btn.configure(
+            command=lambda: UploadImage.upload_image(
+                self.images_container.original_image_container,
+                self.images_container.edited_image_container,
+                (self.images_container.edited_image_container.size),
+            )
+        )
+        self.images_container.original_image_container.img_label.drop_target_register(
+            DND_ALL
+        )
+        self.images_container.original_image_container.img_label.dnd_bind(
+            "<<Drop>>",
+            lambda event: UploadImage.drop_image(
+                event,
+                self.images_container.original_image_container,
+                self.images_container.edited_image_container,
+                (self.images_container.edited_image_container.size),
+            ),
+        )

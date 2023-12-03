@@ -1,4 +1,6 @@
 from customtkinter import CTkFrame, CTkButton, CTkSwitch
+from Controller.theme_mode import ThemeMode
+from Controller.upload_image import UploadImage
 
 
 class AssistantMenu(CTkFrame):
@@ -33,7 +35,11 @@ class AssistantMenu(CTkFrame):
         self.save_btn.grid(
             row=0, column=1, padx=int(size[0] * 0.022), pady=int(size[1] * 0.022)
         )
-        self.theme_switch = CTkSwitch(master=self, text="Dark mode")
+        self.theme_switch = CTkSwitch(
+            master=self,
+            text="Dark mode",
+            command=lambda: ThemeMode.change_theme(self.theme_switch),
+        )
         self.theme_switch.grid(
             row=0, column=2, padx=int(size[0] * 0.022), pady=int(size[1] * 0.022)
         )
