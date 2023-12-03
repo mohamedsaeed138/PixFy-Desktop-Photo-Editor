@@ -1,0 +1,40 @@
+tab 1 Transform:3 fields 5 labels
+    rotation (angle) enable
+    translation (x,y) enable
+    show histogram 
+
+tab 2 Gray: 11 lable 11 switch 
+    gray enable-disable
+    start radio
+    contrast stretching (min,max) enable-disable
+    thresholding enable-disable
+    equalistaion enable-disable
+    negative enable-disable
+    power law (gamma) enable-disable
+    log transform enable-disable
+    #start radio
+
+
+
+tab3 Smoothing:
+    Gaussian radio button
+    Box radio button
+    Mean    radio button
+    Median radio button
+    Max radio button
+
+tab4 Sharpening:
+    Laplacian   radio button
+    Composite laplacian 1 radio button
+    Composite laplacian 2 radio button
+
+tab5 Edge Detection:(Gray Dependant)
+    Canny   radio button
+    Sobel X radio button
+    Sobel Y radio button
+    Sobel XY radio button
+
+
+tab6 Noise:(Gray Dependant)
+    Gaussian
+    Salt Pepper
