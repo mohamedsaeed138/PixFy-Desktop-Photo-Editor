@@ -12,11 +12,11 @@ class ImageViewContainer(CTkFrame):
             corner_radius=5,
         )
         # logic controller part
-        self.path: str
-        self.image = open(r"C:\Users\mohamed\Downloads\Vector.png")
-        self.image.thumbnail((size[0], size[1] - 5))
+        # self.path: str
+        # self.image = open(r"C:\Users\mohamed\Downloads\Vector.png")
+        # self.image.thumbnail((size[0], size[1] - 5))
 
-        self.photo_image = CTkImage(self.image, self.image, size=self.image.size)
+        # self.photo_image = CTkImage(self.image, self.image, size=self.image.size)
         self.img_label = CTkLabel(
             master=self,
             text="",
