@@ -28,7 +28,7 @@ class MainScreen(CTkFrame):
             command=lambda: UploadImage.upload_image(
                 self.images_container.original_image_container,
                 self.images_container.edited_image_container,
-                (self.images_container.edited_image_container.size),
+                (self.images_container.edited_image_container.label_size()),
             )
         )
         self.images_container.original_image_container.img_label.drop_target_register(
@@ -40,6 +40,6 @@ class MainScreen(CTkFrame):
                 event,
                 self.images_container.original_image_container,
                 self.images_container.edited_image_container,
-                (self.images_container.edited_image_container.size),
+                (self.images_container.edited_image_container.label_size()),
             ),
         )

@@ -28,4 +28,5 @@ class ImageViewContainer(CTkFrame):
         self.img_label.grid(row=0, column=0, rowspan=19, pady=2, sticky="nsew")
         self.title_label.grid(row=19, column=0, sticky="nsew")
 
-        self.size = (100, 100)
+    def label_size(self):
+        return self.img_label.winfo_width(), self.img_label.winfo_height()

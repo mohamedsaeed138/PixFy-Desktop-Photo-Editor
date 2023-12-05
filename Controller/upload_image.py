@@ -18,6 +18,7 @@ class UploadImage:
 
     def change_image(image_path, original_widget, edited_widget, size):
         image = open(image_path)
+        print((original_widget.winfo_width(), original_widget.winfo_height()))
         image.thumbnail((size[0], size[1] - 5))
         photo_image = CTkImage(image, image, image.size)
         original_widget.img_label.configure(image=photo_image)
