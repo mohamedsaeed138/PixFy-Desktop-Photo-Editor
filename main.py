@@ -5,3 +5,4 @@ set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 set_default_color_theme("dark-blue")  # Th
 root = MainApp(title="PixFy Photo Editor")
 root.mainloop()
+# ============>>>>>>><
