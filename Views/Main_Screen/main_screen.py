@@ -9,24 +9,21 @@ from tkinterdnd2 import TkinterDnD, DND_ALL
 
 class MainScreen(CTkFrame):
     def __init__(self, master, master_size: tuple[int, int]):
-        super().__init__(master, fg_color=["#ffffff", "#ffffff"])
-        self.grid_rowconfigure(list(range(0, 10)), pad=20)
-        self.grid_columnconfigure(list(range(0, 10)), pad=20)
+        super().__init__(master, fg_color=["white", "#ffffff"])
+        self.grid_rowconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9), weight=1, uniform="a")
+        self.grid_columnconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9), weight=1, uniform="a")
 
-        self.images_container = ImagesContainer(
-            self, size=(master_size[0] - 20, master_size[1] * 0.6 - 20)
+        self.images_container = ImagesContainer(self)
+        self.images_container.grid(
+            row=0, column=0, rowspan=6, columnspan=10, padx=6, pady=6, sticky="nsew"
         )
-        self.images_container.grid(row=0, column=0, rowspan=6, columnspan=10, padx=6)
 
-        self.assistant_menu = AssistantMenu(
-            self, size=(master_size[0] * 0.4, master_size[1] * (3.55 / 45.5))
-        )
-        self.assistant_menu.grid(row=6, column=3, columnspan=4)
+        self.assistant_menu = AssistantMenu(self)
+        self.assistant_menu.grid(row=6, column=3, columnspan=4, sticky="nsew", pady=14)
 
-        self.editor_menu = EditorMenu(
-            self, size=(master_size[0] * 0.6, master_size[1] * 0.281)
-        )
-        self.editor_menu.grid(row=7, column=2, rowspan=3, columnspan=6)
+        self.editor_menu = EditorMenu(self)
+        self.editor_menu.grid(row=7, column=2, rowspan=3, columnspan=6, sticky="nsew")
+
         self.assistant_menu.upload_btn.configure(
             command=lambda: UploadImage.upload_image(
                 self.images_container.original_image_container,
