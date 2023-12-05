@@ -1,29 +1,33 @@
-from customtkinter import CTkFrame, CTkButton, CTkSwitch
+from customtkinter import CTkFrame, CTkButton, CTkSwitch, CTkFont
 from Controller.theme_mode import ThemeMode
 from Controller.upload_image import UploadImage
 
 
 class AssistantMenu(CTkFrame):
     def __init__(self, master):
-        super().__init__(master, fg_color=["#EAEAEA", "white"])
-        self.grid_columnconfigure((0, 1, 2), weight=1, uniform="a")
-        self.grid_rowconfigure((0), weight=1, uniform="a")
-        self.grid_propagate(False)
+        super().__init__(master, corner_radius=10)
         self.upload_btn = CTkButton(
             self,
-            text="Upload Image",
-            corner_radius=7,
+            text="Upload",
+            corner_radius=10,
+            font=CTkFont(family="Arial", size=15),
         )
-        self.upload_btn.grid(row=0, column=0, sticky="nsew", padx=(30, 20), pady=9)
+        self.upload_btn.place(
+            relx=0.0246, rely=0.224, relwidth=0.3068, relheight=0.5517
+        )
         self.save_btn = CTkButton(
             self,
             text="Save",
-            corner_radius=7,
+            corner_radius=10,
+            font=CTkFont(family="Arial", size=15),
         )
-        self.save_btn.grid(row=0, column=1, sticky="nsew", padx=15, pady=9)
+        self.save_btn.place(relx=0.346, rely=0.224, relwidth=0.3068, relheight=0.5517)
         self.theme_switch = CTkSwitch(
             master=self,
             text="Dark mode",
             command=lambda: ThemeMode.change_theme(self.theme_switch),
+            font=CTkFont(family="Arial", size=15),
         )
-        self.theme_switch.grid(row=0, column=2, sticky="nsew", padx=(15, 20))
+        self.theme_switch.place(
+            relx=0.671, rely=0.224, relwidth=0.3068, relheight=0.5517
+        )

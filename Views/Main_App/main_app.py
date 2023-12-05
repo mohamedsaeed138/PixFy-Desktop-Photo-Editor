@@ -18,6 +18,7 @@ class MainApp(CTk):
         )
 
         width, height = (int(screen_width * 0.7037), int(screen_height * 0.7037))
+        print((width, height))
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
         x_coordinate = (screen_width / 2) - (width / 2)
@@ -25,7 +26,7 @@ class MainApp(CTk):
         self.geometry("%dx%d+%d+%d" % (width, height, x_coordinate, y_coordinate))
         self.title(title)
         self.intro: IntroScreen = IntroScreen(
-            self, (width, height), 1000, "./Assets/Intro Frame.png"
+            self, (width, height), 1, "./Assets/Intro Frame.png"
         )
         self.main: MainScreen = MainScreen(self, (width, height))
 

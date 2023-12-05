@@ -1,10 +1,13 @@
 from typing import Callable, Optional, Tuple, Union
+from customtkinter import CTkFont
 import customtkinter as ctk
 
 
 class EditorMenu(ctk.CTkTabview):
     def __init__(self, master):
-        super().__init__(master, text_color=["#ffffff", "#ffffff"])
+        super().__init__(
+            master,
+        )
         self.add("Transform")
         self.add("Gray Filters")
         self.add("Smoothing")

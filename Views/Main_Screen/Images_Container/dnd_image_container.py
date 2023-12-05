@@ -3,7 +3,7 @@ from tkinterdnd2 import TkinterDnD, DND_ALL
 from PIL.Image import open
 
 
-class DNDImageViewContainer(CTkFrame, TkinterDnD.DnDWrapper):
+class DNDImageContainer(CTkFrame, TkinterDnD.DnDWrapper):
     def __init__(self, master, title: str):
         super().__init__(
             master,
@@ -29,5 +29,3 @@ class DNDImageViewContainer(CTkFrame, TkinterDnD.DnDWrapper):
         )
         self.img_label.grid(row=0, column=0, rowspan=19, pady=2, sticky="nsew")
         self.title_label.grid(row=19, column=0, sticky="nsew")
-
-        self.size = (100, 100)
