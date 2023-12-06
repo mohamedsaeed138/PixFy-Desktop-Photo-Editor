@@ -1,5 +1,6 @@
 from os import getcwd
-from customtkinter import filedialog, CTkImage
+from customtkinter import filedialog
+from PIL.ImageTk import PhotoImage
 from PIL.Image import open
 
 
@@ -18,10 +19,12 @@ class UploadImage:
 
     def change_image(image_path, original_widget, edited_widget, size):
         image = open(image_path)
-        print((original_widget.winfo_width(), original_widget.winfo_height()))
-        image.thumbnail((size[0], size[1] - 5))
-        photo_image = CTkImage(image, image, image.size)
-        original_widget.img_label.configure(image=photo_image)
-        original_widget.img_label.image = photo_image  # type: ignore
-        edited_widget.img_label.configure(image=photo_image)
-        edited_widget.img_label.image = photo_image  # type: ignore
+        copy = image.copy()
+
+        copy.thumbnail(size)
+
+        photo_image = PhotoImage(copy)
+        original_widget.image_label.configure(image=photo_image)
+        original_widget.image_label.image = photo_image  # type: ignore
+        edited_widget.image_label.configure(image=photo_image)
+        edited_widget.image_label.image = photo_image  # type: ignore

@@ -9,9 +9,9 @@ from tkinterdnd2 import TkinterDnD, DND_ALL
 
 
 class MainScreen(CTkFrame):
-    def __init__(self, master, master_size: tuple[int, int]):
+    def __init__(self, master):
         super().__init__(master, fg_color=["white", "black"])
-        self.original_image_container = ImageContainer(self, "Original")
+        self.original_image_container = DNDImageContainer(self, "Original")
         self.edited_image_container = ImageContainer(self, "After")
         self.original_image_container.place(
             relx=0.02072, rely=0.03684, relwidth=0.4722, relheight=0.5592
@@ -26,24 +26,22 @@ class MainScreen(CTkFrame):
         )
 
         self.editor_menu = EditorMenu(self)
-        self.editor_menu.place(relx=0.207, rely=0.718, relwidth=0.585, relheight=0.26)
+        self.editor_menu.place(relx=0.2072, rely=0.7184, relwidth=0.585, relheight=0.26)
 
-        # self.assistant_menu.upload_btn.configure(
-        #     command=lambda: UploadImage.upload_image(
-        #         self.images_container.original_image_container,
-        #         self.images_container.edited_image_container,
-        #         (self.images_container.edited_image_container.label_size()),
-        #     )
-        # )
-        # self.images_container.original_image_container.img_label.drop_target_register(
-        #     DND_ALL
-        # )
-        # self.images_container.original_image_container.img_label.dnd_bind(
-        #     "<<Drop>>",
-        #     lambda event: UploadImage.drop_image(
-        #         event,
-        #         self.images_container.original_image_container,
-        #         self.images_container.edited_image_container,
-        #         (self.images_container.edited_image_container.label_size()),
-        #     ),
-        # )
+        self.assistant_menu.upload_btn.configure(
+            command=lambda: UploadImage.upload_image(
+                self.original_image_container,
+                self.edited_image_container,
+                self.original_image_container.label_size(),
+            )
+        )
+        self.original_image_container.image_label.drop_target_register(DND_ALL)
+        self.original_image_container.image_label.dnd_bind(
+            "<<Drop>>",
+            lambda event: UploadImage.drop_image(
+                event,
+                self.original_image_container.image_label,
+                self.edited_image_container.image_label,
+                self.original_image_container.label_size(),
+            ),
+        )
