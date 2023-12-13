@@ -1,6 +1,7 @@
 from customtkinter import CTkFrame, CTkLabel, CTkImage, CTkFont, BOTH
 from tkinterdnd2 import TkinterDnD, DND_ALL
 from PIL.Image import open
+from Controller.upload_image import UploadImage
 
 from Views.Main_Screen.Images_Container.image_container import ImageContainer
 
@@ -15,6 +16,14 @@ class DNDImageContainer(CTkFrame, TkinterDnD.DnDWrapper):
         self.TkdndVersion = TkinterDnD._require(self)
         self.image_container = ImageContainer(self, title)
         self.image_container.pack(expand=True, fill=BOTH)
+        self.image_label.bind(
+            "<Configure>",
+            lambda event: UploadImage.rescale_image(
+                event,
+                self.image_label,
+                self.master.edited_image_container.image_label,
+            ),
+        )
 
     @property
     def image_label(self) -> CTkLabel:

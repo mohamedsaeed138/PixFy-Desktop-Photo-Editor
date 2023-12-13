@@ -115,7 +115,7 @@
     "selected_hover_color": ["#736AD9", "#736AD9"],
     "unselected_color": ["#cccccc", "gray29"],
     "unselected_hover_color": ["gray70", "gray41"],
-    "text_color": ["#ffffff", "#DCE4EE"],
+    "text_color": ["white", "white"],
     "text_color_disabled": ["gray74", "gray60"]
   },
   "CTkTextbox": {

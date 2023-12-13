@@ -24,14 +24,13 @@ class MainScreen(CTkFrame):
         self.assistant_menu.place(
             relx=0.305, rely=0.615, relwidth=0.39, relheight=0.076
         )
-
         self.editor_menu = EditorMenu(self)
         self.editor_menu.place(relx=0.2072, rely=0.7184, relwidth=0.585, relheight=0.26)
 
         self.assistant_menu.upload_btn.configure(
             command=lambda: UploadImage.upload_image(
-                self.original_image_container,
-                self.edited_image_container,
+                self.original_image_container.image_label,
+                self.edited_image_container.image_label,
                 self.original_image_container.label_size(),
             )
         )
