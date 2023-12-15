@@ -1,7 +1,6 @@
 from customtkinter import CTkFrame, CTkLabel, CTkImage, CTkFont, BOTH
 from tkinterdnd2 import TkinterDnD, DND_ALL
-from PIL.Image import open
-from Controller.upload_image import UploadImage
+from Presenter.presenter import Presenter
 
 from Views.Main_Screen.Images_Container.image_container import ImageContainer
 
@@ -14,16 +13,18 @@ class DNDImageContainer(CTkFrame, TkinterDnD.DnDWrapper):
             corner_radius=0,
         )
         self.TkdndVersion = TkinterDnD._require(self)
+        self.presenter: Presenter = master.presenter
+
         self.image_container = ImageContainer(self, title)
         self.image_container.pack(expand=True, fill=BOTH)
-        self.image_label.bind(
-            "<Configure>",
-            lambda event: UploadImage.rescale_image(
-                event,
-                self.image_label,
-                self.master.edited_image_container.image_label,
-            ),
+        self.add_events()
+
+    def add_events(self):
+        self.image_container.image_label.bind(
+            "<Configure>", self.presenter.rescale_images
         )
+        self.image_container.image_label.drop_target_register(DND_ALL)
+        self.image_container.image_label.dnd_bind("<<Drop>>", self.presenter.drop_image)
 
     @property
     def image_label(self) -> CTkLabel:

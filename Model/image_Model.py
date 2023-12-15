@@ -1,19 +1,21 @@
-from PIL.Image import Image, open
+from PIL.Image import Image, open, LANCZOS
+from PIL.ImageOps import contain
 
 
 class ImageModel:
     def __init__(self):
-        self.path: str
-        self.image: Image
-        self.size: tuple[int, int]
+        self.image: Image = None
+        self.edited_image: Image = None
 
-    def get_copy(self, max_size: tuple[int, int]) -> Image:
-        new_image = self.image.copy()
-        new_image.thumbnail(max_size)
-        return new_image
-
-    def set_img(self, path: str, max_size: tuple[int, int]) -> Image:
-        self.path = path
+    def set_images(self, path: str):
         self.image = open(path)
-        self.size = self.image.size
-        return self.get_copy(max_size)
+        self.edited_image = self.image.copy()
+
+    def get_scaled_images(self, size: tuple[int, int]) -> tuple[Image, Image]:
+        return (
+            contain(self.image, size),
+            contain(self.edited_image, size),
+        )
+
+    def get_images_size(self) -> tuple[Image, Image]:
+        return self.image.size, self.edited_image.size

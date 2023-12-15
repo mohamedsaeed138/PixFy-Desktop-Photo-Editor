@@ -1,6 +1,13 @@
 from ctypes import windll
 from tkinter import PhotoImage
-from customtkinter import CTkFrame, CTkLabel, CTkImage, CTk, BOTH
+from customtkinter import (
+    CTkFrame,
+    CTkLabel,
+    CTkImage,
+    CTk,
+    BOTH,
+    AppearanceModeTracker,
+)
 from Views.Main_Screen.main_screen import MainScreen
 from Views.Intro_Screen.intro_screen import IntroScreen
 
@@ -8,11 +15,19 @@ from Views.Intro_Screen.intro_screen import IntroScreen
 class MainApp(CTk):
     def __init__(self, title: str, icon_path: str, intro_image_path: str) -> None:
         super().__init__()
-
         self.set_window_properties(title, icon_path)
         self.set_window_geometry()
         self.intro: IntroScreen = IntroScreen(
-            self, master_size=self.get_screen_dimensions(), image_path=intro_image_path
+            self,
+            master_size=(
+                int(self.get_screen_dimensions()[0] * 0.7037),
+                int(self.get_screen_dimensions()[1] * 0.7037),
+            ),
+            image_path=intro_image_path,
+        )
+        print(
+            int(self.get_screen_dimensions()[0] * 0.7037),
+            int(self.get_screen_dimensions()[1] * 0.7037),
         )
         self.main: MainScreen = MainScreen(self)
 
@@ -47,5 +62,7 @@ class MainApp(CTk):
 
     def start_intro(self) -> None:
         self.intro.destroy()
+        del self.intro
+        self.intro = None
         self.overrideredirect(0)
         self.main.pack(expand=True, fill=BOTH)

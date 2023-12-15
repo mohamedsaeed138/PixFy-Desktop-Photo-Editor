@@ -1,13 +1,13 @@
-from customtkinter import CTkFrame, CTkButton, CTkSwitch, CTkFont
-from Controller.theme_mode import ThemeMode
-from Controller.upload_image import UploadImage
+from customtkinter import CTkFrame, CTkButton, CTkSwitch, CTkFont, set_appearance_mode
 
 
 class AssistantMenu(CTkFrame):
     def __init__(self, master):
         super().__init__(master, corner_radius=10)
+        self.presenter = master.presenter
         self.create_children()
         self.place_children()
+        self.add_events()
 
     def create_children(self):
         self.upload_btn = CTkButton(
@@ -22,10 +22,13 @@ class AssistantMenu(CTkFrame):
             corner_radius=10,
             font=CTkFont(family="Arial", size=15),
         )
+
         self.theme_switch = CTkSwitch(
             master=self,
             text="Dark mode",
-            command=lambda: ThemeMode.change_theme(self.theme_switch),
+            command=lambda: set_appearance_mode("Dark")
+            if self.theme_switch.get() == 1
+            else set_appearance_mode("Light"),
             font=CTkFont(family="Arial", size=15),
         )
 
@@ -37,3 +40,6 @@ class AssistantMenu(CTkFrame):
         self.theme_switch.place(
             relx=0.671, rely=0.224, relwidth=0.3068, relheight=0.5517
         )
+
+    def add_events(self):
+        self.upload_btn.configure(command=self.presenter.upload_image)
