@@ -85,6 +85,7 @@ class ImageModel:
         plt.hist(gray.ravel(), 256, [0, 255])
         plt.title("Histogram")
         plt.show()
+        plt.close()
 
     def threshold(self, key: int) -> None:
         cv2_image = cvtColor(array(self.edited_image), COLOR_RGB2RGBA)
