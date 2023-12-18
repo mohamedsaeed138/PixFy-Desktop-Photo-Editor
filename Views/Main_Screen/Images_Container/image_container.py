@@ -21,7 +21,9 @@ class ImageContainer(CTkFrame):
             corner_radius=5,
         )
         self.size_label = CTkLabel(
-            master=self, text="0x0", font=CTkFont("Inter", 14, weight="normal")
+            master=self,
+            text="- x -    ratio= - : -",
+            font=CTkFont("Inter", 14, weight="normal"),
         )
         self.title_label = CTkLabel(
             master=self,

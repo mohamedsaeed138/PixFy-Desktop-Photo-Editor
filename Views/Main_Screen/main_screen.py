@@ -1,12 +1,10 @@
-from customtkinter import CTkFrame, CTkLabel, CTkImage
-import customtkinter as ctk
+from customtkinter import CTkFrame
 from Model.image_Model import ImageModel
 from Presenter.presenter import Presenter
 from Views.Main_Screen.Assistant_Menu.assistant_menu import AssistantMenu
 from Views.Main_Screen.Images_Container.image_container import ImageContainer
 from Views.Main_Screen.Images_Container.dnd_image_container import DNDImageContainer
 from Views.Main_Screen.Editor_Menu.editor_menu import EditorMenu
-from customtkinter import get_appearance_mode, set_appearance_mode
 
 
 class MainScreen(CTkFrame):
@@ -20,7 +18,7 @@ class MainScreen(CTkFrame):
         self.original_image_container = DNDImageContainer(self, "Original")
         self.edited_image_container = ImageContainer(self, "After")
         self.assistant_menu = AssistantMenu(self)
-        self.editor_menu = EditorMenu(self)
+        self.editor_menu = EditorMenu(self, disabled=True)
 
     def place_children(self):
         self.original_image_container.place(
@@ -32,4 +30,10 @@ class MainScreen(CTkFrame):
         self.assistant_menu.place(
             relx=0.305, rely=0.615, relwidth=0.39, relheight=0.076
         )
+        self.editor_menu.place(relx=0.2072, rely=0.7184, relwidth=0.585, relheight=0.26)
+
+    def rebuild_editor_menu(self):
+        self.editor_menu.destroy()
+        del self.editor_menu
+        self.editor_menu = EditorMenu(self, disabled=False)
         self.editor_menu.place(relx=0.2072, rely=0.7184, relwidth=0.585, relheight=0.26)

@@ -43,3 +43,4 @@ class AssistantMenu(CTkFrame):
 
     def add_events(self):
         self.upload_btn.configure(command=self.presenter.upload_image)
+        self.save_btn.configure(command=self.presenter.save_image)

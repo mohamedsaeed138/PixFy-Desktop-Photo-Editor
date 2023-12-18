@@ -25,10 +25,6 @@ class MainApp(CTk):
             ),
             image_path=intro_image_path,
         )
-        print(
-            int(self.get_screen_dimensions()[0] * 0.7037),
-            int(self.get_screen_dimensions()[1] * 0.7037),
-        )
         self.main: MainScreen = MainScreen(self)
 
     def set_window_properties(self, title: str, icon_path: str) -> None:

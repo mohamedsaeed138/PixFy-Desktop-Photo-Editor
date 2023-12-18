@@ -1,6 +1,5 @@
 from Views.Main_App.main_app import MainApp
 from customtkinter import (
-    get_appearance_mode,
     set_appearance_mode,
     set_default_color_theme,
 )
@@ -17,7 +16,7 @@ def main() -> None:
         intro_image_path="./Assets/Intro Frame.png",
     )
 
-    root.mainloop(10000)
+    root.mainloop(3000)
 
 
 if __name__ == "__main__":
