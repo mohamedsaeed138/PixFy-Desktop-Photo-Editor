@@ -70,12 +70,22 @@ class ImageModel:
         self.edited_image = pillow_image
 
     def translate(self, displacement: tuple[int, int]):
-        self.edited_image = self.edited_image.transform(
+        # old code
+        # self.edited_image = self.edited_image.transform(
+        #     self.edited_image.size,
+        #     AFFINE,
+        #     (1, 0, displacement[0], 0, 1, displacement[1]),
+        #     resample=BICUBIC,
+        # )
+        translated_image = self.edited_image.transform(
             self.edited_image.size,
             AFFINE,
             (1, 0, displacement[0], 0, 1, displacement[1]),
             resample=BICUBIC,
         )
+        bbox = translated_image.getbbox()
+
+        self.edited_image = self.edited_image.crop(bbox)
 
     def histogram(self) -> None:
         cv2_image = cvtColor(array(self.edited_image), COLOR_RGB2RGBA)
