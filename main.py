@@ -10,7 +10,7 @@ from warnings import filterwarnings
 # this app designed to work based on ratio =0.7037
 def main() -> None:
     filterwarnings("ignore")
-    set_appearance_mode("System")
+    set_appearance_mode(get_appearance_mode())
     set_default_color_theme("./violet-theme.json")  # Theme
     root = MainApp(
         title="PixFy Photo Editor",
