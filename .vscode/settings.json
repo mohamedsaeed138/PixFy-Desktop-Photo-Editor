@@ -2,6 +2,7 @@
     "python.analysis.autoImportCompletions": false,
     "python.analysis.typeCheckingMode": "off",
     "cSpell.words": [
+        "customtkinter",
         "relwidth",
         "Sobel",
         "sobelx",
