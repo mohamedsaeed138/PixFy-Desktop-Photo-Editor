@@ -1,13 +1,24 @@
-from customtkinter import CTkFrame, CTkButton, CTkSwitch, CTkFont, set_appearance_mode
+from ctypes import byref, c_int, sizeof, windll
+from customtkinter import (
+    CTkFrame,
+    CTkButton,
+    CTkSwitch,
+    CTkFont,
+    set_appearance_mode,
+    get_appearance_mode,
+)
 
 
 class AssistantMenu(CTkFrame):
     def __init__(self, master):
         super().__init__(master, corner_radius=10)
+        self.HWND = windll.user32.GetParent(self.master.master.winfo_id())
         self.presenter = master.presenter
         self.create_children()
         self.place_children()
         self.add_events()
+        if get_appearance_mode() == "Dark":
+            self.theme_switch.select()
 
     def create_children(self):
         self.upload_btn = CTkButton(
@@ -26,9 +37,7 @@ class AssistantMenu(CTkFrame):
         self.theme_switch = CTkSwitch(
             master=self,
             text="Dark mode",
-            command=lambda: set_appearance_mode("Dark")
-            if self.theme_switch.get() == 1
-            else set_appearance_mode("Light"),
+            command=self.handle_theme,
             font=CTkFont(family="Arial", size=15),
         )
 
@@ -44,3 +53,18 @@ class AssistantMenu(CTkFrame):
     def add_events(self):
         self.upload_btn.configure(command=self.presenter.upload_image)
         self.save_btn.configure(command=self.presenter.save_image)
+
+    def handle_theme(self):
+        HWND = windll.user32.GetParent(self.master.master.winfo_id())
+        text_color, bg_color = 0x000000, 0x00FFFFFF
+        mode = "Light"
+        if self.theme_switch.get() == 1:
+            mode = "Dark"
+            text_color, bg_color = bg_color, text_color
+        windll.dwmapi.DwmSetWindowAttribute(
+            HWND, 35, byref(c_int(bg_color)), sizeof(c_int)
+        )
+        windll.dwmapi.DwmSetWindowAttribute(
+            HWND, 36, byref(c_int(text_color)), sizeof(c_int)
+        )
+        set_appearance_mode(mode)

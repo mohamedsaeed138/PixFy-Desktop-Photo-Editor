@@ -10,7 +10,7 @@ class IntroScreen(CTkLabel):
     def __init__(
         self,
         master: CTk,
-        master_size: tuple[int, int],
+        intro_size: tuple[int, int],
         image_path: str,
     ):
         super().__init__(master, text="")
@@ -19,7 +19,7 @@ class IntroScreen(CTkLabel):
             image=PhotoImage(
                 contain(
                     self.intro,
-                    (int(master_size[0] * 1.24868), int(master_size[1] * 1.24868)),
+                    (int(intro_size[0] * 1.24868), int(intro_size[1] * 1.24868)),
                     LANCZOS,
                 )
             )

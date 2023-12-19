@@ -1,4 +1,4 @@
-from ctypes import windll
+from ctypes import windll, byref, sizeof, c_int
 from tkinter import PhotoImage
 from customtkinter import (
     CTkFrame,
@@ -7,33 +7,49 @@ from customtkinter import (
     CTk,
     BOTH,
     AppearanceModeTracker,
+    get_appearance_mode,
 )
 from Views.Main_Screen.main_screen import MainScreen
 from Views.Intro_Screen.intro_screen import IntroScreen
 
 
 class MainApp(CTk):
-    def __init__(self, title: str, icon_path: str, intro_image_path: str) -> None:
+    def __init__(
+        self,
+        title: str,
+        icon_path: str,
+        intro_image_path: str,
+        initial_size_ratio: float,
+    ) -> None:
         super().__init__()
+
         self.set_window_properties(title, icon_path)
-        self.set_window_geometry()
+        self.set_window_geometry(initial_size_ratio)
+        screen_width, screen_height = self.get_screen_dimensions()
         self.intro: IntroScreen = IntroScreen(
             self,
-            master_size=(
-                int(self.get_screen_dimensions()[0] * 0.7037),
-                int(self.get_screen_dimensions()[1] * 0.7037),
+            intro_size=(
+                int(screen_width * initial_size_ratio),
+                int(screen_height * initial_size_ratio),
             ),
             image_path=intro_image_path,
         )
         self.main: MainScreen = MainScreen(self)
 
     def set_window_properties(self, title: str, icon_path: str) -> None:
+        windll.shell32.SetCurrentProcessExplicitAppUserModelID(
+            "Softawre Engineer.Mohamed Saeed.PixFy Desktop App.1.0"
+        )
         self.title(title)
-        self.wm_iconbitmap(PhotoImage(icon_path))
+        self.iconbitmap(icon_path)
+        # self.wm_iconbitmap(PhotoImage(icon_path))
 
-    def set_window_geometry(self) -> None:
+    def set_window_geometry(self, initial_size_ratio: float) -> None:
         screen_width, screen_height = self.get_screen_dimensions()
-        width, height = int(screen_width * 0.7037), int(screen_height * 0.7037)
+        width, height = (
+            int(screen_width * initial_size_ratio),
+            int(screen_height * initial_size_ratio),
+        )
         x_coordinate, y_coordinate = self.calculate_window_position(width, height)
         self.geometry(f"{width}x{height}+{x_coordinate}+{y_coordinate}")
 
@@ -52,7 +68,7 @@ class MainApp(CTk):
 
     def mainloop(self, intro_time: int = 0, *args, **kwargs) -> None:
         self.intro.pack(expand=True, fill=BOTH)
-        self.after(intro_time, self.start_intro)
+        self.after(intro_time * 1000, self.start_intro)
         self.overrideredirect(1)
         super().mainloop(*args, **kwargs)
 
@@ -61,4 +77,14 @@ class MainApp(CTk):
         del self.intro
         self.intro = None
         self.overrideredirect(0)
+        # region fix title color problem
+        if get_appearance_mode() == "Dark":
+            HWND = windll.user32.GetParent(self.winfo_id())
+            windll.dwmapi.DwmSetWindowAttribute(
+                HWND, 35, byref(c_int(0x000000)), sizeof(c_int)
+            )
+            windll.dwmapi.DwmSetWindowAttribute(
+                HWND, 36, byref(c_int(0x00FFFFFF)), sizeof(c_int)
+            )
+        # endregion
         self.main.pack(expand=True, fill=BOTH)
