@@ -4,6 +4,7 @@ from PIL.ImageOps import contain
 from skimage.util import random_noise
 from cv2 import (
     Canny,
+    Laplacian,
     Sobel,
     addWeighted,
     cvtColor,
@@ -13,16 +14,16 @@ from cv2 import (
     equalizeHist,
     threshold,
     resize,
-    warpAffine,
+    CV_64F,
     filter2D,
     GaussianBlur,
     boxFilter,
     blur,
     medianBlur,
 )
-import cv2
+
 from matplotlib import pyplot as plt
-from numpy import array, float32, log, power, uint8, min, max
+from numpy import array, log, power, uint8, min, max
 
 from Presenter.choice_enums import SharpeningChoice
 
@@ -32,7 +33,6 @@ class ImageModel:
         self.image: Image = None
         self.edited_image: Image = None
         self.sharpening_filters = {
-            SharpeningChoice.Laplacian.value: array([[0, 1, 0], [1, -4, 1], [0, 1, 0]]),
             SharpeningChoice.CompositeLaplacian1.value: array(
                 [[1, 1, 1], [1, -7, 1], [1, 1, 1]]
             ),
@@ -130,7 +130,13 @@ class ImageModel:
 
     def sharpening(self, choice: int) -> None:
         cv2_image = cvtColor(array(self.edited_image), COLOR_RGB2RGBA)
-        sharpened_image = filter2D(cv2_image, -1, self.sharpening_filters[choice])
+        if choice != SharpeningChoice.Laplacian.value:
+            sharpened_image = filter2D(cv2_image, -1, self.sharpening_filters[choice])
+        else:
+            laplacian_image = Laplacian(cv2_image, CV_64F)
+            normalized_image = cv2_image + laplacian_image
+            sharpened_image = normalized_image.clip(0, 255).astype(uint8)
+
         self.edited_image = fromarray(sharpened_image)
 
     def smooth_gaussian_filter(self, param) -> None:
