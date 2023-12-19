@@ -1,5 +1,5 @@
 from PIL.ImageFilter import MaxFilter, MinFilter
-from PIL.Image import Image, open, LANCZOS, fromarray, BICUBIC
+from PIL.Image import Image, open, LANCZOS, fromarray, BICUBIC, AFFINE
 from PIL.ImageOps import contain
 from skimage.util import random_noise
 from cv2 import (
@@ -72,12 +72,12 @@ class ImageModel:
         self.edited_image = pillow_image
 
     def translate(self, displacement: tuple[int, int]):
-        cv2_image = cvtColor(array(self.edited_image), COLOR_RGB2RGBA)
-        translate_matrix = float32([[1, 0, displacement[0]], [0, 1, displacement[1]]])
-        translate_image = warpAffine(
-            cv2_image, translate_matrix, (cv2_image.shape[0], cv2_image.shape[1])
+        self.edited_image = self.edited_image.transform(
+            self.edited_image.size,
+            AFFINE,
+            (1, 0, displacement[0], 0, 1, displacement[1]),
+            resample=BICUBIC,
         )
-        self.edited_image = fromarray(translate_image)
 
     def histogram(self) -> None:
         cv2_image = cvtColor(array(self.edited_image), COLOR_RGB2RGBA)
