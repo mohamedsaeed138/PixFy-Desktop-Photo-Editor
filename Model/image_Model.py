@@ -61,7 +61,10 @@ class ImageModel:
         self.edited_image = contain(pillow_image, self.edited_image.size, LANCZOS)
 
     def rotate(self, angle: int):
-        self.edited_image = self.edited_image.rotate(angle, BICUBIC, expand=True)
+        # self.edited_image = self.edited_image.rotate(angle, BICUBIC, expand=True)
+        self.edited_image = self.edited_image.convert("RGBA").rotate(
+            angle, BICUBIC, expand=True, fillcolor=None
+        )
 
     def resize(self, size):
         cv2_image = cvtColor(array(self.edited_image), COLOR_RGB2RGBA)
