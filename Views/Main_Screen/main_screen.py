@@ -1,5 +1,5 @@
 from customtkinter import CTkFrame
-from Model.image_Model import ImageModel
+from Model.image_model import ImageModel
 from Presenter.presenter import Presenter
 from Views.Main_Screen.Assistant_Menu.assistant_menu import AssistantMenu
 from Views.Main_Screen.Images_Container.image_container import ImageContainer

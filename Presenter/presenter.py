@@ -3,7 +3,7 @@ from os import getcwd
 from PIL.ImageTk import PhotoImage
 from customtkinter import filedialog, END, CTkEntry, CTkSwitch
 from tkinter import Event, IntVar, messagebox
-from Model.image_Model import ImageModel
+from Model.image_model import ImageModel
 from os.path import splitext
 from .choice_enums import GrayTabChoice, NoiseChoice, SharpeningChoice,SmoothingChoice,EdgeDetectionChoice
 from re import match
