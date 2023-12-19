@@ -32,14 +32,12 @@ class ImageModel:
         self.image: Image = None
         self.edited_image: Image = None
         self.sharpening_filters = {
-            SharpeningChoice.Laplacian.value: array(
-                [[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]]
-            ),
+            SharpeningChoice.Laplacian.value: array([[0, 1, 0], [1, -4, 1], [0, 1, 0]]),
             SharpeningChoice.CompositeLaplacian1.value: array(
                 [[1, 1, 1], [1, -7, 1], [1, 1, 1]]
             ),
             SharpeningChoice.CompositeLaplacian2.value: array(
-                [[0, 1, 0], [1, -4, 1], [0, 1, 0]]
+                [[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]]
             ),
         }
 
