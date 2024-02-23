@@ -1,16 +1,13 @@
-from ctypes import windll, byref, sizeof, c_int
-from tkinter import PhotoImage
-from customtkinter import (
-    CTkFrame,
-    CTkLabel,
-    CTkImage,
-    CTk,
-    BOTH,
-    AppearanceModeTracker,
-    get_appearance_mode,
-)
-from Views.Main_Screen.main_screen import MainScreen
-from Views.Intro_Screen.intro_screen import IntroScreen
+from platform import uname
+from PIL.ImageTk import PhotoImage
+from PIL.Image import open
+from customtkinter import CTk
+from Model.image_model import ImageModel
+from Presenter.presenter import Presenter
+from Views.Main_App.Assistant_Menu.assistant_menu import AssistantMenu
+from Views.Main_App.Images_Container.image_container import ImageContainer
+from Views.Main_App.Images_Container.dnd_image_container import DNDImageContainer
+from Views.Main_App.Editor_Menu.editor_menu import EditorMenu
 
 
 class MainApp(CTk):
@@ -18,73 +15,71 @@ class MainApp(CTk):
         self,
         title: str,
         icon_path: str,
-        intro_image_path: str,
-        initial_size_ratio: float,
-    ) -> None:
+        initial_size_ratio: float | tuple[float, float] = 0.7037,
+    ):
         super().__init__()
-
-        self.set_window_properties(title, icon_path)
-        self.set_window_geometry(initial_size_ratio)
-        screen_width, screen_height = self.get_screen_dimensions()
-        self.intro: IntroScreen = IntroScreen(
-            self,
-            intro_size=(
-                int(screen_width * initial_size_ratio),
-                int(screen_height * initial_size_ratio),
-            ),
-            image_path=intro_image_path,
+        self.windows_title = title
+        self.icon_path = icon_path
+        self.ratio = initial_size_ratio
+        self.size = self.get_size()
+        self.position = self.get_position()
+        self.geometry(
+            f"{self.size[0]}x{self.size[1]}+{self.position[0]}+{self.position[1]}"
         )
-        self.main: MainScreen = MainScreen(self)
+        self.set_window_properties()
+        self.presenter = Presenter(model=ImageModel(), view=self)
+        self.create_children()
+        self.place_children()
 
-    def set_window_properties(self, title: str, icon_path: str) -> None:
-        windll.shell32.SetCurrentProcessExplicitAppUserModelID(
-            "Softawre Engineer.Mohamed Saeed.PixFy Desktop App.1.0"
+    def create_children(self):
+        self.original_image_container = DNDImageContainer(self, "Original")
+        self.edited_image_container = ImageContainer(self, "After")
+        self.assistant_menu = AssistantMenu(self)
+        self.editor_menu = EditorMenu(self, disabled=True)
+
+    def place_children(self):
+        self.original_image_container.place(
+            relx=0.02072, rely=0.03684, relwidth=0.4722, relheight=0.5592
         )
-        self.title(title)
-        self.iconbitmap(icon_path)
-        # self.wm_iconbitmap(PhotoImage(icon_path))
-
-    def set_window_geometry(self, initial_size_ratio: float) -> None:
-        screen_width, screen_height = self.get_screen_dimensions()
-        width, height = (
-            int(screen_width * initial_size_ratio),
-            int(screen_height * initial_size_ratio),
+        self.edited_image_container.place(
+            relx=0.507, rely=0.03684, relwidth=0.4722, relheight=0.5592
         )
-        x_coordinate, y_coordinate = self.calculate_window_position(width, height)
-        self.geometry(f"{width}x{height}+{x_coordinate}+{y_coordinate}")
-
-    def get_screen_dimensions(self) -> tuple[int, int]:
-        user32 = windll.user32
-        return user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
-
-    def calculate_window_position(self, width: int, height: int) -> tuple[int, int]:
-        screen_width, screen_height = (
-            self.winfo_screenwidth(),
-            self.winfo_screenheight(),
+        self.assistant_menu.place(
+            relx=0.305, rely=0.615, relwidth=0.39, relheight=0.076
         )
-        x_coordinate = (screen_width / 2) - (width / 2)
-        y_coordinate = (screen_height / 2) - (height / 2)
-        return int(x_coordinate), int(y_coordinate)
+        self.editor_menu.place(relx=0.2072, rely=0.7184, relwidth=0.585, relheight=0.26)
 
-    def mainloop(self, intro_time: int = 0, *args, **kwargs) -> None:
-        self.intro.pack(expand=True, fill=BOTH)
-        self.after(intro_time * 1000, self.start_intro)
-        self.overrideredirect(1)
-        super().mainloop(*args, **kwargs)
+    def rebuild_editor_menu(self):
+        self.editor_menu.destroy()
+        del self.editor_menu
+        self.editor_menu = EditorMenu(self, disabled=False)
+        self.editor_menu.place(relx=0.2072, rely=0.7184, relwidth=0.585, relheight=0.26)
 
-    def start_intro(self) -> None:
-        self.intro.destroy()
-        del self.intro
-        self.intro = None
-        self.overrideredirect(0)
-        # region fix title color problem
-        if get_appearance_mode() == "Dark":
-            HWND = windll.user32.GetParent(self.winfo_id())
-            windll.dwmapi.DwmSetWindowAttribute(
-                HWND, 35, byref(c_int(0x000000)), sizeof(c_int)
+    def set_window_properties(self) -> None:
+        self.title(self.windows_title)
+        if uname()[0] == "Windows":
+            from ctypes import windll
+
+            windll.shell32.SetCurrentProcessExplicitAppUserModelID(
+                "Softawre Engineer.Mohamed Saeed.PixFy Desktop App.1.0"
             )
-            windll.dwmapi.DwmSetWindowAttribute(
-                HWND, 36, byref(c_int(0x00FFFFFF)), sizeof(c_int)
-            )
-        # endregion
-        self.main.pack(expand=True, fill=BOTH)
+            self.iconbitmap(self.icon_path)
+        elif uname()[0] == "Linux":
+            self.wm_iconphoto(False, PhotoImage(open(self.icon_path)))
+
+    def get_size(self) -> tuple[int, int]:
+        if self.ratio is tuple[float, float]:
+            width_ratio, height_ratio = self.ratio
+        elif self.ratio is tuple and len(self.ratio) == 1:
+            width_ratio = height_ratio = self.ratio[0]
+        else:
+            width_ratio = height_ratio = self.ratio
+        return (
+            int(self.winfo_screenwidth() * width_ratio * 1.25),
+            int(self.winfo_screenheight() * height_ratio * 1.25),
+        )
+
+    def get_position(self) -> tuple[int, int]:
+        x = (self.winfo_screenwidth() / 2) - (self.size[0] / 2)
+        y = (self.winfo_screenheight() / 2) - (self.size[1] / 2)
+        return int(x), int(y) - 25

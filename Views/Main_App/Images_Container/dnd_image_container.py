@@ -2,7 +2,7 @@ from customtkinter import CTkFrame, CTkLabel, CTkImage, CTkFont, BOTH
 from tkinterdnd2 import TkinterDnD, DND_ALL
 from Presenter.presenter import Presenter
 
-from Views.Main_Screen.Images_Container.image_container import ImageContainer
+from Views.Main_App.Images_Container.image_container import ImageContainer
 
 
 class DNDImageContainer(CTkFrame, TkinterDnD.DnDWrapper):

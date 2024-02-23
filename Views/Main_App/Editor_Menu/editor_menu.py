@@ -1,12 +1,12 @@
 from customtkinter import CTkFont, CTkButton, CENTER, CTkFrame
 import customtkinter as ctk
-from Views.Main_Screen.Editor_Menu.edge_detection_tab import EdgeDetectionTab
-from Views.Main_Screen.Editor_Menu.gray_filters_tab import GrayFiltersTab
-from Views.Main_Screen.Editor_Menu.noise_tab import NoiseTab
-from Views.Main_Screen.Editor_Menu.sharpening_tab import SharpeningTab
-from Views.Main_Screen.Editor_Menu.smoothing_tab import SmoothingTab
+from Views.Main_App.Editor_Menu.edge_detection_tab import EdgeDetectionTab
+from Views.Main_App.Editor_Menu.gray_filters_tab import GrayFiltersTab
+from Views.Main_App.Editor_Menu.noise_tab import NoiseTab
+from Views.Main_App.Editor_Menu.sharpening_tab import SharpeningTab
+from Views.Main_App.Editor_Menu.smoothing_tab import SmoothingTab
 
-from Views.Main_Screen.Editor_Menu.transform_tab import TransformTab
+from Views.Main_App.Editor_Menu.transform_tab import TransformTab
 
 
 class EditorMenu(ctk.CTkTabview):

@@ -1,25 +1,30 @@
-from Views.Main_App.main_app import MainApp
+from Views.intro import Intro
 from customtkinter import (
     set_appearance_mode,
     set_default_color_theme,
     get_appearance_mode,
 )
+from resource_path import resource_path
 from warnings import filterwarnings
 
 
-# this app designed to work based on ratio =0.7037
+# this main app designed to work based on ratio =0.7037
 def main() -> None:
     filterwarnings("ignore")
-    set_appearance_mode(get_appearance_mode())
-    set_default_color_theme("./violet-theme.json")  # Theme
-    root = MainApp(
-        title="PixFy Photo Editor",
-        icon_path="./Assets/icon.ico",
-        intro_image_path=f"./Assets/Intro Frame{' Dark'if get_appearance_mode()=='Dark' else ''}.png",
-        initial_size_ratio=0.6,
+    mode = get_appearance_mode()
+    set_appearance_mode(mode)
+    set_default_color_theme(resource_path(".\\Assets\\violet-theme.json"))
+    if mode == "Dark":
+        intro_image_path = resource_path(".\\Assets\\Intro Frame Dark.png")
+    else:
+        intro_image_path = resource_path(".\\Assets\\Intro Frame.png")
+    intro = Intro(
+        intro_image_path=intro_image_path,
+        ratio=0.55,
+        duration=4,
+        color="black" if mode == "Dark" else "white",
     )
-
-    root.mainloop(intro_time=4)
+    intro.mainloop()
 
 
 if __name__ == "__main__":

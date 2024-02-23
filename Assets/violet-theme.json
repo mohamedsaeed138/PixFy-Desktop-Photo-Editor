@@ -3,7 +3,7 @@
     "fg_color": ["white", "black"]
   },
   "CTkToplevel": {
-    "fg_color": ["gray95", "gray10"]
+    "fg_color": ["white", "black"]
   },
   "CTkFrame": {
     "corner_radius": 6,
