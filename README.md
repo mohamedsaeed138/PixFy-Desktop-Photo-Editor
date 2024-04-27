@@ -1,3 +1,4 @@
+<!-- PROJECT Badges -->
 <div align="center">
   <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/stargazers"><img src="https://img.shields.io/github/stars/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Stars Badge"/></a>
 <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/network/members"><img src="https://img.shields.io/github/forks/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Forks Badge"/></a>
@@ -6,32 +7,19 @@
 <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348"></a>
 <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348" alt="License Badge"/></a>
 </div>
-<h1 align="center"> Pixfy Desktop Photo Editor</h1>
-<p align="center"><i>A collection of awesome readme templates to display on your github profile.</i></p>
+
 
 <br>
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor">
     <img src="images/logo.ico" alt="Logo" width="80" height="80">
   </a>
-
-  <h3 align="center">Best-README-Template</h3>
-
+  <h3 align="center">PixFy</h3>
   <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-  </p>
+   <i>A Desktop Photo Editor using python and customtkinter</i></p>
 </div>
 
 
@@ -79,25 +67,9 @@ Here's why:
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
 
 Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+* [![Python][Angular.io]][Python-url]
 
 
 
@@ -121,6 +93,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
+
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
@@ -147,6 +120,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -160,14 +135,12 @@ Don't forget to give the project a star! Thanks again!
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+[Angular.io]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
+[Python-url]: https://www.python.org/
