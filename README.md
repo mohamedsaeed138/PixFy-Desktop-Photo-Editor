@@ -9,9 +9,8 @@
   <p align="center">
    <i>An (MVP) Desktop Photo Editor using python and customtkinter</i></p>
 </div>
-<!-- ABOUT THE PROJECT -->
 <!-- PROJECT Badges -->
-<div align="center"> 
+<div align="center">
   <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/stargazers"><img src="https://img.shields.io/github/stars/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Stars Badge"/></a>
 <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/network/members"><img src="https://img.shields.io/github/forks/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Forks Badge"/></a>
 <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/pulls"><img src="https://img.shields.io/github/issues-pr/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Pull Requests Badge"/></a>
@@ -19,18 +18,19 @@
 <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348"></a>
 <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/blob/main/LICENSE"><img src="https://img.shields.io/github/license/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348" alt="License Badge"/></a>
 </div>
+<!-- ABOUT THE PROJECT -->
 
 ## Overview
 
 ![Intro](images/Intro_Frame_Dark.png)
-This is a desktop photo editor application built using Python, following the Model-View-Presenter (MVP) architectural pattern. It provides a minimal set of features aimed at demonstrating the core functionality of the application. The user interface is developed with customtkinter library, and the application utilizes the open-cv and Pillow libraries for image processing and manipulation.
+This is a desktop photo editor application built using Python, following the Model-View-Presenter (MVP) architectural pattern. It provides a minimal set of features aimed at demonstrating the core functionality of the application. The user interface is developed with custom-tkinter library, and the application utilizes the open-cv and Pillow libraries for image processing and manipulation.
 
 ## Features
 
 * Responsive Design App
 * Light & Dark Modes
 
-### Basic Image Editing Tools:
+### Basic Image Editing Tools
 
 * Box Filter
 * Canny Edge Detection
@@ -119,6 +119,6 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/blob/main/LICENSE.txt) for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
