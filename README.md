@@ -1,12 +1,3 @@
-<!-- PROJECT Badges -->
-<div align="center"> 
-  <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/stargazers"><img src="https://img.shields.io/github/stars/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Stars Badge"/></a>
-<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/network/members"><img src="https://img.shields.io/github/forks/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Forks Badge"/></a>
-<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/pulls"><img src="https://img.shields.io/github/issues-pr/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Pull Requests Badge"/></a>
-<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/issues"><img src="https://img.shields.io/github/issues/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Issues Badge"/></a>
-<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348"></a>
-<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/blob/main/LICENSE"><img src="https://img.shields.io/github/license/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348" alt="License Badge"/></a>
-</div>
 
 <!-- PROJECT LOGO -->
 <br />
@@ -19,13 +10,19 @@
    <i>An (MVP) Desktop Photo Editor using python and customtkinter</i></p>
 </div>
 <!-- ABOUT THE PROJECT -->
+<!-- PROJECT Badges -->
+<div align="center"> 
+  <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/stargazers"><img src="https://img.shields.io/github/stars/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Stars Badge"/></a>
+<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/network/members"><img src="https://img.shields.io/github/forks/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Forks Badge"/></a>
+<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/pulls"><img src="https://img.shields.io/github/issues-pr/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Pull Requests Badge"/></a>
+<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/issues"><img src="https://img.shields.io/github/issues/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Issues Badge"/></a>
+<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348"></a>
+<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/blob/main/LICENSE"><img src="https://img.shields.io/github/license/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348" alt="License Badge"/></a>
+</div>
 
 ## Overview
 
 ![Intro](images/Intro_Frame_Dark.png)
-
-<div align="center"><a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python Badge"/></a></div>
-
 This is a desktop photo editor application built using Python, following the Model-View-Presenter (MVP) architectural pattern. It provides a minimal set of features aimed at demonstrating the core functionality of the application. The user interface is developed with customtkinter library, and the application utilizes the open-cv and Pillow libraries for image processing and manipulation.
 
 ## Features
