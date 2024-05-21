@@ -23,7 +23,7 @@
 ## Overview
 
 ![Intro](images/Intro_Frame_Dark.png)
-This is a desktop photo editor application built using Python, following the Model-View-Presenter (MVP) architectural pattern. It provides a minimal set of features aimed at demonstrating the core functionality of the application. The user interface is developed with custom-tkinter library, and the application utilizes the open-cv and Pillow libraries for image processing and manipulation.
+This is a desktop photo editor application built using Python, following the Model-View-Presenter (MVP) architectural pattern. It provides a minimal set of features aimed at demonstrating the core functionality of the application. The user interface is developed with custom-tkinter library, and the application utilizes the open-cv and Pillow libraries for image processing and manipulation.The project was created for a college image processing course.
 
 ## Features
 
