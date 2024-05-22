@@ -16,7 +16,7 @@
 <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/pulls"><img src="https://img.shields.io/github/issues-pr/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Pull Requests Badge"/></a>
 <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/issues"><img src="https://img.shields.io/github/issues/mohamedsaeed138/PixFy_Desktop_Photo_Editor" alt="Issues Badge"/></a>
 <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348"></a>
-<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/blob/main/LICENSE"><img src="https://img.shields.io/github/license/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348" alt="License Badge"/></a>
+<a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/blob/main/LICENSE.txt"><img src="https://img.shields.io/github/license/mohamedsaeed138/PixFy_Desktop_Photo_Editor?color=2b9348" alt="License Badge"/></a>
 </div>
 <!-- ABOUT THE PROJECT -->
 
@@ -124,6 +124,6 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor/blob/main/LICENSE.txt) for more information.
+Distributed under the MIT License. See [LICENSE](LICENSE.txt) for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
