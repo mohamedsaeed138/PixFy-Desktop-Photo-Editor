@@ -3,11 +3,11 @@
 <br />
 <div align="center">
   <a href="https://github.com/mohamedsaeed138/PixFy_Desktop_Photo_Editor">
-    <img src="images/logo.ico" alt="Logo" width="80" height="80">
+    <img src="images/logo.ico" alt="Logo" width="100" height="100">
   </a>
   <h3 align="center">PixFy</h3>
   <p align="center">
-   <i>An (MVP) Desktop Photo Editor using python and customtkinter</i></p>
+   <i>A Desktop Photo Editor using python and customtkinter following the MVP Model-View-Presenter Architectural Pattern</i></p>
 </div>
 <!-- PROJECT Badges -->
 <div align="center">
@@ -53,23 +53,28 @@ This is a desktop photo editor application built using Python, following the Mod
 * Rotation (190 Degrees)
 * Salt & Pepper Noise Generation
 * Sobel Edge Detection (X, Y, XY)
-* Thresholding
+* Threshold
 * Translation
 
 ## Screenshots
 
-![Intro Light](images/Intro_Frame.png)
-![Intro Dark](images/Intro_Frame_Dark.png)
-![Main Screen](images/MainScreen.png)
-![Dark Mode](images/Dark_Mode.png)
-![Rotation](images/Rotation190Degree.png)
-![Histogram](images/Histogram.png)
-![Gray Scale](images/Gray.png)
-![Negative](images/Negative.png)
-![Box Filter](images/Box_Filter.png)
-![Composite Laplacian](images/Composite_Laplacian_Sharpening.png)
-![Noise](images/S&P_Nosie.png)
-![Canny Filter](images/Canny.png)
+* The App intro in light mode ![Intro Light](images/Intro_Frame.png)
+* The App intro in dark mode ![Intro Dark](images/Intro_Frame_Dark.png)
+* The main screen in light mode ![Main Screen Light Mode](images/Main%20Screen%20Light.png)
+* Here i enabled the dark mode theme ![Main Screen Dark Mode](images/Main%20Screen%20Dark.png)
+* You can upload an image using the file dialog or drag and drop ![Upload](images/Upload.png)
+* Here After uploading the image ![After Uploading](images/After%20Uploading.png)
+* Here i rotated the image with 190 degree ![Rotation](images/Rotation190Degree.png)
+* Here i resized the image ![Resizing](images/Resizing.png)
+* You can display the histogram of the image but first enable the gray scale filter from Gray Filters tab ![Histogram](images/Histogram.png)
+* Here i applied the gray scale filter ![Gray Scale](images/Gray.png)
+* Here i applied the negative filter ![Negative](images/Negative.png)
+* Here i smoothed the image using Box Filter ![Box Filter](images/Box_Filter.png)
+* Here i sharpened the image using Composite Laplacian Filter ![Composite Laplacian](images/Composite_Laplacian_Sharpening.png)
+* You can add some Salt & Paper noise or Gaussian Noise ![Noise](images/S&P_Nosie.png)
+* Here i used canny method for image segmentation, also you can use Sobel method ![Canny Filter](images/Canny.png)
+* After you finish editing ,you can save the image as png or jpg ![Save](images/Save.png)
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
